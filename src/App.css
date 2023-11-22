@@ -71,7 +71,7 @@ main {
 }
 
 .active {
-  /* background: lightskyblue; */
+  background: lightskyblue;
   color: #000;
   border-radius: 6px;
 
@@ -80,14 +80,4 @@ main {
 .icon,
 .link_text {
   font-size: 20px;
-
-}
-
-.submenu {
-  text-decoration: none;
-  padding: 10px 15px;
-  background-color: #f8f8f8;
-  width: 100%;
-
-  display: block;
 }

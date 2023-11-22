@@ -55,8 +55,16 @@ const SidebarPro = ({ children }) => {
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
   };
+
+  function event(e) {
+    console.log(e);
+  }
+
+  console.log(document.fullscreenElement);
+
   return (
     <div className="d-flex">
+      <button onClick={event}>Click</button>
       <Menu
         style={{
           width: 256,
@@ -69,7 +77,7 @@ const SidebarPro = ({ children }) => {
         inlineCollapsed={collapsed}
         items={items}
         onClick={(e) => {
-            navigate(`/${e.key}`)
+          navigate(`/${e.key}`);
           console.log(e.key);
         }}
       />

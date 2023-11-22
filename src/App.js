@@ -8,11 +8,12 @@ import Comment from "./pages/Comment";
 import Analytics from "./pages/Analytics";
 import Products from "./pages/Products";
 import SidebarPro from "./components/SidebarPro";
+import Fullscreen from "./pages/Fullscreen";
 
 function App() {
   return (
     <>
-      <SidebarPro>
+      {/* <SidebarPro>
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -20,16 +21,17 @@ function App() {
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/product" element={<Products />} />
         </Routes>
-      </SidebarPro>
-      {/* <Sidebar>
+      </SidebarPro> */}
+      <Sidebar>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/comment" element={<Comment />} />
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/product" element={<Products />} />
+          <Route path="/screen" element={<Fullscreen />} />
         </Routes>
-      </Sidebar> */}
+      </Sidebar>
     </>
   );
 }

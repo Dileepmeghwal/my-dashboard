@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import {
   FaTh,
@@ -8,10 +8,13 @@ import {
   FaCommentAlt,
   FaShoppingBag,
   FaThList,
+  FaChevronCircleDown,
 } from "react-icons/fa";
+import { Switch } from "antd";
 
 const Sidebar = ({ children }) => {
   const [toggle, setToggle] = useState(true);
+  const [dir, setDir] = useState(localStorage.getItem("direction") || "ltr");
 
   const toggleSidebar = () => {
     setToggle(!toggle);
@@ -31,7 +34,8 @@ const Sidebar = ({ children }) => {
       path: "/analytics",
       name: "Analytics",
       icon: <FaRegChartBar />,
-      
+      arrow: <FaChevronCircleDown />,
+
       subMenu: [
         {
           path: "/analytics/report1",
@@ -52,13 +56,47 @@ const Sidebar = ({ children }) => {
       path: "/product",
       name: "Product",
       icon: <FaShoppingBag />,
+      subMenu: [
+        {
+          path: "/analytics/report1",
+          name: "Report 1",
+        },
+        {
+          path: "/analytics/report2",
+          name: "Report 2",
+        },
+      ],
     },
     {
       path: "/productList",
       name: "Product List",
       icon: <FaThList />,
     },
+    {
+      path: "/screen",
+      name: "Full Screen",
+      icon: <FaThList />,
+    },
   ];
+
+  const onChange = (checked) => {
+    // console.log(`switch to ${checked}`);
+    const newDirection = dir === "ltr" ? "rtl" : "ltr";
+    setDir(newDirection);
+    localStorage.setItem("direction", newDirection);
+    document.documentElement.dir = newDirection;
+  };
+
+  function changeDir() {
+    const newDirection = dir === "ltr" ? "rtl" : "ltr";
+    setDir(newDirection);
+    localStorage.setItem("direction", newDirection);
+    document.documentElement.dir = newDirection;
+  }
+
+  useEffect(() => {
+    document.documentElement.dir = dir;
+  }, [dir]);
   return (
     <div className="wrapper">
       <div className="sidebar" style={{ width: toggle ? "260px" : "60px" }}>
@@ -87,15 +125,21 @@ const Sidebar = ({ children }) => {
               >
                 {item.name}
               </div>
+              {item.arrow}
             </NavLink>
             {item.subMenu &&
               item.subMenu.map((item) => (
-                <NavLink to={item.path} className={"submenu"}>
-                  <div>{item.name}</div>
-                </NavLink>
+                <div className="sub-menu">
+                  <NavLink to={item.path}>
+                    <div>{item.name}</div>
+                  </NavLink>
+                </div>
               ))}
           </>
         ))}
+        <div className="direction-toggle mx-3">
+          <Switch onChange={onChange} />
+        </div>
       </div>
       <main>{children}</main>
     </div>
