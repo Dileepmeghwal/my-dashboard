@@ -11,23 +11,83 @@ body {
   overflow: hidden;
 }
 
-.sidebar {
-  background-color: #11101d;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 260px;
-  height: 100%;
-  transition: all 0.5s ease;
+
+main {
+  width: 100%;
+  padding: 20px;
 }
 
-.sidebar .logo-details{
-  height: 60px;
+.wrapper {
+  display: flex;
+
+
   width: 100%;
+}
+
+.sidebar {
+  background: #212121;
+  color: #fff;
+  height: 100vh;
+  transition: all 0.5s;
+}
+
+.top_section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 15px;
+}
+
+.logo {
+  font-size: 20px;
+}
+
+.bars {
+  display: flex;
+  font-size: 25px;
+
+  cursor: pointer;
+}
+
+.link {
   display: flex;
   align-items: center;
-}
-.sidebar .logo-details i{
   color: #fff;
-  font-size: 30px;
+  padding: 10px 15px;
+  gap: 15px;
+  transition: all 0.5s;
+  width: 100%;
+  text-decoration: none;
+
+}
+
+.link:hover {
+  background: rgba(135, 206, 250, 0.527);
+  color: #000;
+  transition: all 0.5s;
+
+  border-radius: 6px;
+
+}
+
+.active {
+  /* background: lightskyblue; */
+  color: #000;
+  border-radius: 6px;
+
+}
+
+.icon,
+.link_text {
+  font-size: 20px;
+
+}
+
+.submenu {
+  text-decoration: none;
+  padding: 10px 15px;
+  background-color: #f8f8f8;
+  width: 100%;
+
+  display: block;
 }
